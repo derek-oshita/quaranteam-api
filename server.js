@@ -4,7 +4,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken'); 
 require('dotenv').config()
 
-// const routes = require('./routes'); 
+const routes = require('./routes'); 
 const port = process.env.PORT; 
 const app = express(); 
 
@@ -20,6 +20,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json()); 
 
 // AUTH ROUTE
+app.use('/api/v1/auth', routes.auth); 
 
 
 // CONNECTION
