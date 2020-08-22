@@ -5,6 +5,8 @@ const db = require('../models');
 
 // REGISTER CONTROLLER
 const register = async (req, res) => {
+    console.log('register route success...'); 
+    return res.json({message: 'YOU DID IT.'})
     // Ensures fields exist
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: 'All fields are required.'}); 
@@ -15,8 +17,8 @@ const register = async (req, res) => {
     }
     // Try..catch specifies a response if an exception is thrown. 
     try {
-        // Check for an email duplicate. 
-        const foundUser = await db.User.findOne({ email: req.body.email }); 
+        // Check for a username duplicate. 
+        const foundUser = await db.User.findOne({ username: req.body.username }); 
         // Return a message if that email is already in use. 
         if (foundUser) {
             res.status(400).json({
@@ -29,7 +31,7 @@ const register = async (req, res) => {
         // Hash the password. 
         const hash = await bcrypt.hash(req.body.password, salt); 
         // Create user with the newly hashed password. 
-        await db.User.create({ ... req.body, password: hash }); 
+        await db.User.create({ ...req.body, password: hash }); 
 
         // Success. 201: Resource created. 
         return res.status(201).json({status: 201, message: 'Registration complete!'})
@@ -38,7 +40,7 @@ const register = async (req, res) => {
         // 500: Internal server error. 
         return res.status(500).json({
             status: 500, 
-            message: 'Server error. Please try again.'
+            message: 'Error. Please try again.'
         }); 
     }; 
 };
