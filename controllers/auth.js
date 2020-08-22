@@ -5,8 +5,10 @@ const db = require('../models');
 
 // REGISTER CONTROLLER
 const register = async (req, res) => {
+    // sanity check 
     // console.log('register route success...'); 
     // return res.json({message: 'YOU DID IT.'})
+
     // Ensures fields exist
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: 'All fields are required.'}); 
@@ -56,8 +58,8 @@ const register = async (req, res) => {
 // LOGIN CONTROLLER 
 const login = async (req, res) => {
     // Sanity check. 
-    console.log(req.body); 
-    return res.json({message: 'Login working!'}); 
+    // console.log(req.body); 
+    // return res.json({message: 'Login working!'}); 
     try {
         // Find user by username. 
         const foundUser = await db.User.findOne({ username: req.body.username }); 
@@ -67,9 +69,8 @@ const login = async (req, res) => {
                 message: 'Username or password did not match.'
             });
         }; 
-        // Verify password
+        // Verify password.
         const isMatch = await bcrypt.compare(req.body.password, foundUser.password); 
-        // No match. 
         if (!isMatch) {
             return res.status(400).json({
                 status: 400, 
@@ -77,7 +78,10 @@ const login = async (req, res) => {
             }); 
         }; 
         // Payload. 
-        const payload = {id: foundUser._id}; 
+        const payload = {
+            id: foundUser._id, 
+            username: foundUser.username
+        }; 
         const secret = process.env.JWT_SECRET; 
         const expiration = {expiresIn: '1 days'}; 
         // Signature. 
