@@ -8,7 +8,6 @@ const register = async (req, res) => {
     // sanity check 
     // console.log('register route success...'); 
     // return res.json({message: 'YOU DID IT.'})
-
     // Ensures fields exist
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: 'All fields are required.'}); 
@@ -96,10 +95,32 @@ const login = async (req, res) => {
             message: 'Error. Please try again.', 
         }); 
     }; 
-}
+};
+
+// VERIFY (ENSURE THERE IS A TOKEN)
+const verify = async (req, res) => {
+    // Get da token. 
+    const token = req.headers['authorization']; 
+    console.log(req.headers);
+    console.log('Confirm token: ', token); 
+    // Verify. 
+    await jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
+        if (err || !decodedUser) {
+            // 401: unauthorized
+            return res.status(401).json({
+                message: 'You are not authorized, please try again.'
+            }); 
+        };
+        // Add the payload to the request obj.             
+        req.currentUser = decodedUser;
+        // Success, eh? 
+        res.status(200).json({user: decodedUser});  
+    });
+};
 
 // EXPORTS 
 module.exports = {
     register, 
-    login, 
+    login,
+    verify, 
 }; 
