@@ -10,11 +10,11 @@ const register = async (req, res) => {
     // Ensures fields exist
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: 'All fields are required.'}); 
-    }
+    }; 
     // Ensures passwords meet min length
     if (req.body.password.length < 3) {
         return res.status(400).json({message: 'Password must be at least 3 characters long.'})
-    }
+    }; 
     // Try..catch specifies a response if an exception is thrown. 
     try {
         // Check for a username duplicate. 
@@ -24,8 +24,8 @@ const register = async (req, res) => {
             res.status(400).json({
                 status:400, 
                 message: 'That email address already exists, please use another.'
-            })
-        }
+            }); 
+        }; 
         // Saltbae.
         const salt = await bcrypt.genSalt(10); 
         // Hash the password. 
@@ -45,7 +45,57 @@ const register = async (req, res) => {
     }; 
 };
 
+/* 
+{
+    "username": "chelsea",
+    "email": "chelsea@example.com", 
+    "password": "1234"
+}
+*/
+
+// LOGIN CONTROLLER 
+const login = async (req, res) => {
+    // Sanity check. 
+    console.log(req.body); 
+    return res.json({message: 'Login working!'}); 
+    try {
+        // Find user by username. 
+        const foundUser = await db.User.findOne({ username: req.body.username }); 
+        if (!foundUser) {
+            return res.status(400).json({
+                status:400, 
+                message: 'Username or password did not match.'
+            });
+        }; 
+        // Verify password
+        const isMatch = await bcrypt.compare(req.body.password, foundUser.password); 
+        // No match. 
+        if (!isMatch) {
+            return res.status(400).json({
+                status: 400, 
+                message: 'Username or password did not match.'
+            }); 
+        }; 
+        // Payload. 
+        const payload = {id: foundUser._id}; 
+        const secret = process.env.JWT_SECRET; 
+        const expiration = {expiresIn: '1 days'}; 
+        // Signature. 
+        const token = await jwt.sign(payload, secret, expiration); 
+        // Success. 
+        res.status(200).json({token}); 
+    // Error. 
+    } catch (error) {
+        console.log(error); 
+        return res.status(500).json({
+            status: 500, 
+            message: 'Error. Please try again.', 
+        }); 
+    }; 
+}
+
 // EXPORTS 
 module.exports = {
     register, 
+    login, 
 }; 
