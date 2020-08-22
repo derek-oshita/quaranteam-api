@@ -2,21 +2,25 @@
 const jwt = require('jsonwebtoken'); 
 
 // AUTH REQUIRED
-const authRequired = (req, res, next) => {
+const authRequired = async (req, res, next) => {
+    // Get da token. 
     const token = req.headers['authorization']; 
-    console.log(req.headers)
-    console.log('Verify token ===> ', token); 
-
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
+    console.log(req.headers);
+    console.log('Confirm token: ', token); 
+    // Verify. 
+    await jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
         if (err || !decodedUser) {
+            // 401: unauthorized
             return res.status(401).json({
-                message: 'Not authorized. Try again...'
+                message: 'You are not authorized, please try again.'
             }); 
-        }
-        req.currentUser = decodedUser; 
+        };
+        // Add the payload to the request obj.             
+        req.currentUser = decodedUser;
+        // Pass it off.  
         next(); 
-    })
-}
+    });
+}; 
 
 // EXPORTS
 module.exports = authRequired; 

@@ -3,6 +3,15 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); 
 const db = require('../models'); 
 
+// POSTMAN TEST DATA
+/* 
+{
+    "username": "chelsea",
+    "email": "chelsea@example.com", 
+    "password": "1234"
+}
+*/
+
 // REGISTER CONTROLLER
 const register = async (req, res) => {
     // sanity check 
@@ -45,14 +54,6 @@ const register = async (req, res) => {
         }); 
     }; 
 };
-
-/* 
-{
-    "username": "chelsea",
-    "email": "chelsea@example.com", 
-    "password": "1234"
-}
-*/
 
 // LOGIN CONTROLLER 
 const login = async (req, res) => {
