@@ -5,8 +5,8 @@ const db = require('../models');
 
 // REGISTER CONTROLLER
 const register = async (req, res) => {
-    console.log('register route success...'); 
-    return res.json({message: 'YOU DID IT.'})
+    // console.log('register route success...'); 
+    // return res.json({message: 'YOU DID IT.'})
     // Ensures fields exist
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: 'All fields are required.'}); 
