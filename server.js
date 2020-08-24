@@ -20,10 +20,8 @@ app.use(cors({
 app.use(express.urlencoded({extended:false})); 
 app.use(express.json()); 
 
-// AUTH REQUIRED
-
-
-// app.use(authRequired); 
+// EVENTS ROUTE
+// app.use('/api/v1/events', routes.events); 
 
 // AUTH ROUTE
 app.use('/api/v1/auth', routes.auth); 
