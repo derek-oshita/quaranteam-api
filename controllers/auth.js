@@ -61,12 +61,12 @@ const login = async (req, res) => {
     // console.log(req.body); 
     // return res.json({message: 'Login working!'}); 
     try {
-        // Find user by username. 
-        const foundUser = await db.User.findOne({ username: req.body.username }); 
+        // Find user by email. 
+        const foundUser = await db.User.findOne({ email: req.body.email }); 
         if (!foundUser) {
             return res.status(400).json({
                 status:400, 
-                message: 'Username or password did not match.'
+                message: 'Invalid login.'
             });
         }; 
         // Verify password.
@@ -74,7 +74,7 @@ const login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({
                 status: 400, 
-                message: 'Username or password did not match.'
+                message: 'Invalid login.'
             }); 
         }; 
         // Payload. 
