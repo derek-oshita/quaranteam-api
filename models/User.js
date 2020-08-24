@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
         minlength: 3, 
         required: [true, 'Password is a required field.'], 
     }, 
-    name: {
+    location: {
         type: String, 
     }, 
     imgUrl: {
