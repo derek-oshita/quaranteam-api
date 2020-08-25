@@ -87,7 +87,7 @@ const login = async (req, res) => {
         // Signature. 
         const token = await jwt.sign(payload, secret, expiration); 
         // Success. 
-        res.status(200).json({token}); 
+        res.status(200).json({"token": token, "id": foundUser._id}); 
     // Error. 
     } catch (error) {
         console.log(error); 
@@ -119,9 +119,18 @@ const verify = async (req, res) => {
     });
 };
 
+const getUser = (req, res) => {
+    // get user id from req.params.id 
+    db.User.findById(req.params.id, (err, foundUser) => {
+        if (err) console.log('Error in getUser: ', err); 
+        res.status(200).json(foundUser)
+    })
+}; 
+
 // EXPORTS 
 module.exports = {
     register, 
     login,
     verify, 
+    getUser, 
 }; 

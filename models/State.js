@@ -2,7 +2,7 @@
 const mongoose = require('mongoose'); 
 const Schema = mongoose.Schema; 
 
-// EVENT SCHEMA
-// const EventSchema = new Schema ({
+// STATE SCHEMA
+// const StateSchema = new Schema ({
 
 // })

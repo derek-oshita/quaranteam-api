@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json()); 
 
 // EVENTS ROUTE
-// app.use('/api/v1/events', routes.events); 
+// app.use('/api/v1/states', routes.states); 
 
 // AUTH ROUTE
 app.use('/api/v1/auth', routes.auth); 
