@@ -1,4 +1,5 @@
 module.exports = {
     auth: require('./auth'), 
-    stateMeta: require('./meta'), 
+    meta: require('./meta'), 
+    comment: require('./comment'), 
 }

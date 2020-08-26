@@ -1,4 +1,5 @@
-[
+{
+"states": [
     {
       "state": "Alabama",
       "slug": "alabama",
@@ -1050,3 +1051,4 @@
       "facebook_url": null
     }
   ]
+}

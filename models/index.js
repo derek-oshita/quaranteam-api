@@ -1,5 +1,6 @@
 // IMPORTS
 const mongoose = require('mongoose'); 
+require('dotenv').config()
 
 // TROUBLESHOOTING LOG
 console.log('MONGO DB = ', process.env.MONGODB_URI); 

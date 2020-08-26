@@ -1,7 +1,6 @@
 // IMPORTS for '/api/v1/meta'
 const router = require('express').Router(); 
 const ctrl = require('../controllers'); 
-const authRequired = require('../middleware/authRequired'); 
 
 // Routes 
 router.get('/', ctrl.stateMeta.index); 

@@ -1,5 +1,6 @@
 // IMPORTS
 const jwt = require('jsonwebtoken'); 
+require('dotenv').config()
 
 // AUTH REQUIRED
 const authRequired = async (req, res, next) => {

@@ -18,6 +18,10 @@ const commentSchema = mongoose.Schema({
     userId: {    
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'UserID', 
+    }, 
+    stateId: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'StateID', 
     }
 }); 
 

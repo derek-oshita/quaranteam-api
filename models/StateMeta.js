@@ -23,6 +23,9 @@ const StateMetaSchema = mongoose.Schema({
     capital_city: {
         type: String, 
     }, 
+    nickname: {
+        type: String, 
+    }
 }); 
 
 // EXPORTS 
