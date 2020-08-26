@@ -20,8 +20,8 @@ app.use(cors({
 app.use(express.urlencoded({extended:false})); 
 app.use(express.json()); 
 
-// EVENTS ROUTE
-// app.use('/api/v1/states', routes.states); 
+// STATE META ROUTE
+app.use('/api/v1/meta', routes.stateMeta); 
 
 // AUTH ROUTE
 app.use('/api/v1/auth', routes.auth); 

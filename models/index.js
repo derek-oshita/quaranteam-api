@@ -19,5 +19,6 @@ mongoose.connect(connectionString, configOptions)
 
 module.exports = {
     User: require('./User'), 
-    Comment: require('./Comment')
+    Comment: require('./Comment'), 
+    StateMeta: require('./StateMeta'), 
 }; 

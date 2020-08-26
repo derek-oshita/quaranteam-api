@@ -1,10 +1,11 @@
-// IMPORTS 
+// IMPORTS for '/api/v1/meta'
 const router = require('express').Router(); 
-const ctrl = require('../controllers/states'); 
+const ctrl = require('../controllers'); 
 const authRequired = require('../middleware/authRequired'); 
 
 // Routes 
-router.get('/', ctrl.states.index); 
+router.get('/', ctrl.stateMeta.index); 
+router.get('/:id', ctrl.stateMeta.show);
 
 // EXPORT
 module.exports = router; 
