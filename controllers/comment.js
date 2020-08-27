@@ -19,7 +19,9 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-  db.Comment.create(req.body, (err, savedComment) => {
+    // req.body.userId = req.currentUser.id
+    db.Comment.create(req.body, (err, savedComment) => {
+      // reqbody has srare id 
     if (err) console.log('Error in Comment#create:', err);
 
     res.status(200).json(savedComment);
