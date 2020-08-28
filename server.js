@@ -31,4 +31,4 @@ app.use('/api/v1/comment', routes.comment);
 
 
 // CONNECTION
-app.listen(port, () => console.log(`Server is listening on ${port}...`)); 
+app.listen(port || 4000); 
