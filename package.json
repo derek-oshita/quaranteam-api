@@ -1,5 +1,5 @@
 {
-  "name": "audiophile-api",
+  "name": "api-quaranteam",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.generalassemb.ly/derek-oshita/audiophile.git"
+    "url": "https://github.com/derek-oshita/quaranteam-api"
   },
   "author": "Derek Oshita",
   "license": "ISC",

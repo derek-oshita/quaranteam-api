@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const routes = require('./routes'); 
 const port = process.env.PORT; 
 const app = express(); 
-require('dotenv').config()
+require('dotenv').config();
 
 
 // CORS 
