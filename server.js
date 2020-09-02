@@ -6,15 +6,14 @@ const routes = require('./routes');
 const port = process.env.PORT; 
 const app = express(); 
 require('dotenv').config()
-const authRequired = require('./middleware/authRequired'); 
 
 
 // CORS 
-app.use(cors({
-    origin: [`http://localhost:4000`], 
-    methods: 'GET,POST,PUT,DELETE', 
-    optionsSuccessStatus: 200
-})); 
+// app.use(cors({
+//     origin: [`http://localhost:4000`], 
+//     methods: 'GET,POST,PUT,DELETE', 
+//     optionsSuccessStatus: 200
+// })); 
 
 // MIDDLEWARE
 app.use(express.urlencoded({extended:false})); 
