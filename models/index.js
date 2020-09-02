@@ -11,7 +11,7 @@ const configOptions = {
     useFindAndModify: false, 
 }; 
 
-mongoose.connect(connectionString, configOptions)
+mongoose.connect(process.env.MONGODB_URI, configOptions)
     .then(() => console.log('MONGODB successfully connected...'))
     .catch((err) => console.log(`MONGODB ERROR: ${err}`)); 
 

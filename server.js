@@ -31,4 +31,4 @@ app.use('/api/v1/comment', routes.comment);
 
 
 // CONNECTION
-app.listen(port || 4000); 
+app.listen(process.env.PORT || 4000); 
