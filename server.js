@@ -9,11 +9,11 @@ require('dotenv').config();
 
 
 // CORS 
-// app.use(cors({
-//     origin: [`http://localhost:4000`], 
-//     methods: 'GET,POST,PUT,DELETE', 
-//     optionsSuccessStatus: 200
-// })); 
+app.use(cors({
+    origin: [`http://localhost:4000`], 
+    methods: 'GET,POST,PUT,DELETE', 
+    optionsSuccessStatus: 200
+})); 
 
 // MIDDLEWARE
 app.use(express.urlencoded({extended:false})); 
