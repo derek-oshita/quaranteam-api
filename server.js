@@ -9,25 +9,24 @@ require('dotenv').config();
 
 
 // CORS 
-// app.use(cors({
-//     origin: [`http://localhost:4000`], 
-//     methods: 'GET,POST,PUT,DELETE', 
-//     optionsSuccessStatus: 200
-// })); 
+app.use(cors({
+    origin: [`http://localhost:4000`], 
+    methods: 'GET,POST,PUT,DELETE', 
+    optionsSuccessStatus: 200
+})); 
 
 // MIDDLEWARE
 app.use(express.urlencoded({extended:false})); 
 app.use(express.json()); 
 
 // STATE META ROUTE
-app.use('/api/v1/meta', routes.meta); 
+app.use('api/v1/meta', routes.meta); 
 
 // AUTH ROUTE
-app.use('/api/v1/auth', routes.auth); 
+app.use('api/v1/auth', routes.auth); 
 
 // COMMENT ROUTE
-app.use('/api/v1/comment', routes.comment); 
-
+app.use('api/v1/comment', routes.comment); 
 
 // CONNECTION
 app.listen(process.env.PORT || 4000); 
