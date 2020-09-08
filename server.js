@@ -20,6 +20,11 @@ app.options('*', cors());
 app.use(express.urlencoded({extended:false})); 
 app.use(express.json()); 
 
+// HOME ROUTE   
+app.get('/', (req, res) => {
+    res.send('Quaranteam API...')
+}); 
+
 // STATE META ROUTE
 app.use('/api/v1/meta', routes.meta); 
 
@@ -29,7 +34,7 @@ app.use('/api/v1/auth', routes.auth);
 // COMMENT ROUTE
 app.use('/api/v1/comment', routes.comment); 
 
-// CONNECTION
+// SERVER CONNECTION
 app.listen(port || 4000, () => {
     console.log(`Server listening on: ${port}`)
 }); 
