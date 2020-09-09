@@ -32,7 +32,7 @@ Quaranteam separates the front-end and backend. It is important that all depende
 
 ## User Story
 
-A user is defined as anyone who creates an account and interacts with our application. Users are typically a good fit if they'd like a high-level overview of how states are handling COVID-19. They are encouraged to post feedback around this data in order to spread awareness of their own, first-hand experience. 
+A user is defined as anyone who creates an account and interacts with my application. Users will find helpful datapaoints around COVID-19 provided by Covidtracking.com to help them stay informed and metadata from Civil.Services. They are encouraged to post feedback around this data in order to spread awareness of their own, first-hand experience. 
 
 ## Wireframes / ERD
 
