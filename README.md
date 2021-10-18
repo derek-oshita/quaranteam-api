@@ -1,6 +1,8 @@
 ## Quaranteam
 
-Website: https://quaranteam-v1-sf.herokuapp.com/
+Website: CURRENTLY UNDER CONSTRUCTION
+
+10/18 - The API for this application is deprecated and is currently being rebuilt.
 
 Quaranteam is a full-stack application built for the sole purpose of flattening the curve during the 2020 pandemic. In a time of relentless uncertainty, it is important for us to band together and make conscious decisions driven by relevant and comprehensive data. 
 
